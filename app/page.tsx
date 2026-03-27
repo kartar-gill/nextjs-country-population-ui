@@ -2,13 +2,27 @@
 
 import { useState } from "react";
 import BarChart from "./ui/components/bar-chart";
-import { populationData, years } from "./lib/population";
+import { years, getDataForYear } from "./lib/population";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   const [yearIndex, setYearIndex] = useState(0);
   const year = years[yearIndex];
+  const yearData = getDataForYear(year);
+
+  function handleYearSelect(e: React.ChangeEvent<HTMLSelectElement>) {
+    const selected = Number(e.target.value);
+    setYearIndex(years.indexOf(selected));
+  }
+
+  function handlePrev() {
+    setYearIndex((i) => Math.max(0, i - 1));
+  }
+
+  function handleNext() {
+    setYearIndex((i) => Math.min(years.length - 1, i + 1));
+  }
 
   return (
     <main className="flex min-h-screen flex-col p-6">
@@ -44,22 +58,36 @@ export default function Home() {
       </p>
 
       {/* Chart */}
-      <BarChart data={populationData} year={year} topN={10} />
+      <BarChart data={yearData} year={year} topN={10} />
 
       {/* Pagination controls */}
       <div className="flex items-center justify-center gap-4 mt-6">
         <button
-          onClick={() => setYearIndex((i) => Math.max(0, i - 1))}
+          onClick={handlePrev}
           disabled={yearIndex === 0}
           className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-30"
         >
           ← Previous
         </button>
+
         <span className="text-gray-500 text-sm">
           {yearIndex + 1} / {years.length}
         </span>
+
+        <select
+          value={year}
+          onChange={handleYearSelect}
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          {years.map((y) => (
+            <option key={y} value={y}>
+              {y}
+            </option>
+          ))}
+        </select>
+
         <button
-          onClick={() => setYearIndex((i) => Math.min(years.length - 1, i + 1))}
+          onClick={handleNext}
           disabled={yearIndex === years.length - 1}
           className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-30"
         >
