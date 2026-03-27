@@ -46,7 +46,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
       ? {
           type: "value",
           axisLabel: {
-            formatter: (v: number) => `${(v / 1_000_000).toFixed(0)}M`,
+            formatter: (v: number) => `${(v / 1_000).toFixed(0)}M`,
           },
         }
       : {
@@ -64,7 +64,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
       : {
           type: "value",
           axisLabel: {
-            formatter: (v: number) => `${(v / 1_000_000).toFixed(0)}M`,
+            formatter: (v: number) => `${(v / 1_000).toFixed(0)}M`,
           },
         },
 
@@ -79,7 +79,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
           show: true,
           position: isHorizontal ? "right" : "top",
           formatter: (p: { value: number }) =>
-            `${(p.value / 1_000_000).toFixed(1)}M`,
+            `${(p.value / 1_000).toFixed(1)}M`,
           fontSize: 10,
         },
       },
