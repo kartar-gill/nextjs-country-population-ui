@@ -3,19 +3,43 @@
 import { useState } from "react";
 import BarChart from "./ui/components/bar-chart";
 import { populationData, years } from "./lib/population";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [yearIndex, setYearIndex] = useState(0);
   const year = years[yearIndex];
 
   return (
-    <main className="max-w-4xl mx-auto p-6">
+    <main className="flex min-h-screen flex-col p-6">
+      <div className="flex h-20 shrink-0 items-end rounded-lg bg-gray-400 p-4 md:h-46">
+        <Link href="/">
+          <Image
+            src="/united-nations.svg"
+            alt="United Nations Logo"
+            width={176}
+            height={150}
+            className="hidden md:block"
+            priority
+          />
+
+          <Image
+            src="/united-nations.svg"
+            alt="United Nations Logo"
+            width={62}
+            height={54}
+            className="block md:hidden"
+            priority
+          />
+        </Link>
+      </div>
+
       <h1 className="text-2xl font-semibold mb-2">
-        World Population by Country and Year
+        Countries Population By Year (1950 - 2024)
       </h1>
 
       {/* Year display */}
-      <p className="text-6xl font-bold text-gray-200 mb-4 select-none">
+      <p className="text-5xl font-bold text-gray-400 mb-4 select-none">
         {year}
       </p>
 
