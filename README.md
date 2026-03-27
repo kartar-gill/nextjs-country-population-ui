@@ -1,3 +1,5 @@
+This is a personal frontend project showcasing the use of Apache ECharts and Next.js to display country populations by year. It displays the top 10 countries by total population when viewing the bar chart in horizontal orientation and the top 15 countries by total population when viewing the bar chart in vertical orientation. It reads from a json file with population data from 1950 - 2026 (sourced from [United Nations Population Division](https://www.un.org/development/desa/pd/)).
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
