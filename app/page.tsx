@@ -49,7 +49,8 @@ export default function Home() {
       </div>
 
       <h1 className="text-2xl font-semibold mb-2">
-        Countries Population By Year (1950 - 2024)
+        Countries Population By Year ({Math.min(...years)} -{" "}
+        {Math.max(...years)})
       </h1>
 
       {/* Year display */}
