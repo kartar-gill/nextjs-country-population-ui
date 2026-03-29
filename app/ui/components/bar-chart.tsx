@@ -4,7 +4,6 @@ import { useState } from "react";
 import ReactECharts from "echarts-for-react";
 import { PopulationEntry } from "@/app/lib/population";
 import { getCountryColor } from "../countryColours";
-import { style } from "framer-motion/client";
 
 interface Props {
   data: PopulationEntry[];
