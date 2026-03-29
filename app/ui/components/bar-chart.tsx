@@ -80,7 +80,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
           position: isHorizontal ? "right" : "top",
           formatter: (p: { value: number }) =>
             `${(p.value / 1_000_000).toFixed(2)}B`,
-          fontSize: 10,
+          fontSize: isHorizontal ? 10 : 6,
         },
       },
     ],
