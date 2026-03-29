@@ -76,7 +76,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
           itemStyle: { color: colours[i] },
         })),
         label: {
-          show: isHorizontal ? true : false,
+          show: true,
           position: isHorizontal ? "right" : "top",
           formatter: (p: { value: number }) =>
             `${(p.value / 1_000_000).toFixed(2)}B`,
