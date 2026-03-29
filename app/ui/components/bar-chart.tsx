@@ -4,6 +4,7 @@ import { useState } from "react";
 import ReactECharts from "echarts-for-react";
 import { PopulationEntry } from "@/app/lib/population";
 import { getCountryColor } from "../countryColours";
+import { style } from "framer-motion/client";
 
 interface Props {
   data: PopulationEntry[];
@@ -40,8 +41,8 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
 
   const option = {
     grid: isHorizontal
-      ? { left: "20%", right: "5%", top: "5%", bottom: "5%" }
-      : { left: "5%", right: "5%", top: "20%", bottom: "5%" },
+      ? { left: "20%", right: "8%", top: "5%", bottom: "5%" }
+      : { left: "5%", right: "5%", top: "20%", bottom: "8%" },
     xAxis: isHorizontal
       ? {
           type: "value",
@@ -52,7 +53,7 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
       : {
           type: "category",
           data: countries,
-          axisLabel: { rotate: 35, fontSize: 11 },
+          axisLabel: { rotate: 45, fontSize: 11 },
         },
 
     yAxis: isHorizontal
@@ -76,10 +77,10 @@ export default function BarChart({ data, year, topN = 10 }: Props) {
           itemStyle: { color: colours[i] },
         })),
         label: {
-          show: true,
+          show: isHorizontal ? true : false,
           position: isHorizontal ? "right" : "top",
           formatter: (p: { value: number }) =>
-            `${(p.value / 1_000).toFixed(1)}M`,
+            `${(p.value / 1_000_000).toFixed(2)}B`,
           fontSize: 10,
         },
       },
